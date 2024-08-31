@@ -16,12 +16,12 @@ TEMPERATURE="0.0" # greedy
 TOP_P="1.0"
 TOP_K="32"
 SEQ_LENGTHS=(
-    131072
-    65536
-    32768
-    16384
-    8192
-    4096
+    # 131072
+    # 65536
+    32000
+    16000
+    8000
+    4000
 )
 
 MODEL_SELECT() {
@@ -30,10 +30,10 @@ MODEL_SELECT() {
     ENGINE_DIR=$3
     
     case $MODEL_NAME in
-        moa)
+        llamama)
             MODEL_PATH="/workspace/ckpts/hf_ckpt/"
-            MODEL_TEMPLATE_TYPE="base"
-            MODEL_FRAMEWORK="sglang"
+            MODEL_TEMPLATE_TYPE="inst"
+            MODEL_FRAMEWORK="custom_openai"
             ;;
         llama3.1-405b-instruct-fp8)
             MODEL_PATH="meta-llama/Meta-Llama-3.1-405B-Instruct-FP8"
