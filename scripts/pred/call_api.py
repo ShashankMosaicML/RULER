@@ -78,6 +78,7 @@ parser.add_argument("--ssh_server", type=str)
 parser.add_argument("--ssh_key_path", type=str)
 parser.add_argument("--model_name_or_path", type=str, default='gpt-3.5-turbo', 
                     help='supported models from OpenAI or HF (provide a key or a local path to the checkpoint)')
+parser.add_argument("--base_url", type=str, default='')
 
 # Inference
 parser.add_argument("--temperature", type=float, default=1.0)
@@ -192,7 +193,18 @@ def get_llm(tokens_to_generate):
             stop=args.stop_words,
             max_new_tokens=tokens_to_generate,
         )
-        
+    elif args.server_type == 'custom_openai':
+        from client_wrappers import CustomAIClient
+        llm = CustomAIClient(
+            model_name=args.model_name_or_path,
+            temperature=args.temperature,
+            top_k=args.top_k,
+            top_p=args.top_p,
+            random_seed=args.random_seed,
+            stop=args.stop_words,
+            tokens_to_generate=tokens_to_generate,
+            base_url=args.base_url,
+        )
     else:
         raise RuntimeError(f'Unsupported server type {args.server_type}')
 

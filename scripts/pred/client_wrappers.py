@@ -377,6 +377,26 @@ class OpenAIClient:
         return authToken
 
 
+class CustomAIClient(OpenAIClient):
+    
+    def __init__(
+        self,
+        model_name,
+        base_url: str,
+        **generation_kwargs
+    ):  
+        self.base_url = f'{base_url}'
+        self.openai_api_key = os.environ["CUSTOM_API_KEY"]
+            
+    def _create_client(self,):
+        from openai import OpenAI
+        
+        self.client = OpenAI(
+            base_url=self.base_url,
+            api_key=self.openai_api_key
+        )
+
+
 class GeminiClient:
     def __init__(
         self,
