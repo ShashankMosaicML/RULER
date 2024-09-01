@@ -45,6 +45,7 @@ import traceback
 from nemo.collections.asr.parts.utils.manifest_utils import read_manifest
 
 SERVER_TYPES = (
+    'custom_openai',
     'trtllm',
     'vllm',
     'sglang',

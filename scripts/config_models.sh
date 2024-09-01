@@ -32,7 +32,7 @@ MODEL_SELECT() {
     case $MODEL_NAME in
         llamama)
             MODEL_PATH="/workspace/ckpts/hf_ckpt/"
-            MODEL_TEMPLATE_TYPE="inst"
+            MODEL_TEMPLATE_TYPE="meta-chat"
             MODEL_FRAMEWORK="custom_openai"
             ;;
         llama3.1-405b-instruct-fp8)
