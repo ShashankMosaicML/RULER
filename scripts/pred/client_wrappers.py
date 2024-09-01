@@ -387,7 +387,7 @@ class CustomAIClient(OpenAIClient):
     ):  
         self.base_url = f'{base_url}'
         self.openai_api_key = os.environ["CUSTOM_API_KEY"]
-        super().__init__(model_name=model_name, **generation_kwargs)
+        # super().__init__(model_name=model_name, **generation_kwargs)
             
     def _create_client(self,):
         from openai import OpenAI
