@@ -16,10 +16,10 @@
 # container: docker.io/cphsieh/ruler:0.1.0
 # bash run.sh MODEL_NAME BENCHMARK_NAME
 
-if [ $# -ne 2 ]; then
-    echo "Usage: $0 <model_name> $1 <benchmark_name>"
-    exit 1
-fi
+# if [ $# -ne 2 ]; then
+#     echo "Usage: $0 <model_name> $1 <benchmark_name>"
+#     exit 1
+# fi
 
 
 # Root Directories
@@ -127,6 +127,7 @@ for MAX_SEQ_LENGTH in "${SEQ_LENGTHS[@]}"; do
             --top_k ${TOP_K} \
             --top_p ${TOP_P} \
             --batch_size ${BATCH_SIZE} \
+            --base_url ${3} \
             ${STOP_WORDS}
         end_time=$(date +%s)
         time_diff=$((end_time - start_time))
